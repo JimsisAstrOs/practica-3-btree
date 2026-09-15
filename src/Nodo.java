@@ -1,4 +1,6 @@
-public class Nodo {
+
+
+ public class Nodo {
 
     int[] claves;
     Nodo[] hijos;
