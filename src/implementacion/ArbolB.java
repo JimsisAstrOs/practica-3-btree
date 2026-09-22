@@ -1,3 +1,4 @@
+package implementacion;
 public class ArbolB {
 
     private Nodo raiz;
@@ -130,17 +131,17 @@ public class ArbolB {
     }
 
     public void imprimirPorNiveles() {
-    if (raiz == null) {
-        return;
-    }
+        if (raiz == null) {
+            return;
+        }
 
-      Nodo[] cola = new Nodo[100];
-      int inicio = 0;
-      int fin = 0;
+        Nodo[] cola = new Nodo[100];
+        int inicio = 0;
+        int fin = 0;
 
-      cola[fin++] = raiz;
+        cola[fin++] = raiz;
 
-      while (inicio < fin) {
+        while (inicio < fin) {
         int cantidad = fin - inicio;
 
         for (int i = 0; i < cantidad; i++) {
@@ -240,32 +241,32 @@ public class ArbolB {
     }
 
     private void fusionar(Nodo padre, int posicion) {
+
+        Nodo izquierdo = padre.hijos[posicion];
+        Nodo derecho = padre.hijos[posicion + 1];
+
+        izquierdo.claves[izquierdo.numClaves] = padre.claves[posicion];
+        izquierdo.numClaves++;
         
-         Nodo izquierdo = padre.hijos[posicion];
-         Nodo derecho = padre.hijos[posicion + 1];
+        for (int i = 0; i < derecho.numClaves; i++) {
+            izquierdo.claves[izquierdo.numClaves] = derecho.claves[i];
+            izquierdo.numClaves++;
+            }
+        if (!derecho.esHoja()) {
+            int inicio = izquierdo.numClaves - derecho.numClaves;
 
-         izquierdo.claves[izquierdo.numClaves] = padre.claves[posicion];
-         izquierdo.numClaves++;
-         
-         for (int i = 0; i < derecho.numClaves; i++) {
-             izquierdo.claves[izquierdo.numClaves] = derecho.claves[i];
-             izquierdo.numClaves++;
+            for (int i = 0; i <= derecho.numClaves; i++) {
+                izquierdo.hijos[inicio + i] = derecho.hijos[i];
             }
-            if (!derecho.esHoja()) {
-                 int inicio = izquierdo.numClaves - derecho.numClaves;
+        }
+        for (int i = posicion; i < padre.numClaves - 1; i++) {
+            padre.claves[i] = padre.claves[i + 1];
+        }
+        for (int i = posicion + 1; i < padre.numClaves; i++) {
+            padre.hijos[i] = padre.hijos[i + 1];
+        }
 
-                for (int i = 0; i <= derecho.numClaves; i++) {
-                     izquierdo.hijos[inicio + i] = derecho.hijos[i];
-                }
-            }
-            for (int i = posicion; i < padre.numClaves - 1; i++) {
-                 padre.claves[i] = padre.claves[i + 1];
-            }
-            for (int i = posicion + 1; i < padre.numClaves; i++) {
-                 padre.hijos[i] = padre.hijos[i + 1];
-            }
-
-            padre.numClaves--;
+        padre.numClaves--;
     }
 
     private void redistribuirIzquierda(Nodo padre, int posicion) {

@@ -1,6 +1,5 @@
-
-
- public class Nodo {
+package implementacion;
+public class Nodo {
 
     int[] claves;
     Nodo[] hijos;
