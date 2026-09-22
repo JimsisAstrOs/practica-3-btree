@@ -1,6 +1,6 @@
 #  Práctica 3: Árbol B Acotado
 
-## 👥Equipo
+## Equipo
 
 **La Orden del Fénix**
 
@@ -12,7 +12,7 @@
 
 ---
 
-## 📌 Descripción
+## Descripción
 
 En esta práctica se implementó **desde cero un Árbol B acotado de orden 4**, capaz de almacenar llaves enteras sin valores asociados.
 
@@ -40,7 +40,7 @@ Por lo tanto, cada nodo puede tener como máximo **4 hijos y 3 llaves**.
 
 ---
 
-## 💻 Lenguaje utilizado
+## Lenguaje utilizado
 
 La implementación fue realizada en:
 
@@ -52,7 +52,7 @@ La estructura se implementó utilizando arreglos para almacenar las llaves y ref
 
 ---
 
-# ▶️ Ejecución
+# Ejecución
 
 ## Ejecutar el programa principal
 
@@ -72,7 +72,7 @@ El programa principal muestra las operaciones de **inserción, búsqueda y elimi
 
 ---
 
-# 🧪 Ejecutar las pruebas
+# Ejecutar las pruebas
 
 Las pruebas se encuentran en:
 
@@ -96,7 +96,7 @@ Las pruebas muestran el resultado esperado y el resultado obtenido en las operac
 
 ---
 
-# 📁 Estructura del proyecto
+# Estructura del proyecto
 
 ```text
 practica-3-btree/
@@ -115,7 +115,7 @@ practica-3-btree/
 
 ---
 
-# 🧩 Representación del nodo
+#  Representación del nodo
 
 La clase `Nodo` representa cada nodo del Árbol B mediante tres elementos principales:
 
@@ -148,7 +148,7 @@ public boolean esHoja() {
 
 ---
 
-# 🔢 ¿Qué significa `m = 4`?
+# ¿Qué significa `m = 4`?
 
 En un Árbol B de orden `m`, cada nodo puede tener como máximo `m` hijos y `m - 1` llaves.
 
@@ -185,7 +185,7 @@ La raíz es un caso especial y puede tener menos llaves.
 
 ---
 
-# 🔎 ¿Cómo se decide qué hijo seguir durante una búsqueda?
+# ¿Cómo se decide qué hijo seguir durante una búsqueda?
 
 La búsqueda comienza en la raíz y compara la llave que se está buscando con las llaves ordenadas del nodo actual.
 
@@ -226,7 +226,7 @@ Recorrer todos los hijos sería innecesario y eliminaría una de las ventajas pr
 
 ---
 
-# ➕ Inserción
+# Inserción
 
 Para insertar una llave se busca primero la hoja donde debe colocarse.
 
@@ -294,7 +294,7 @@ Si la división llega a la raíz, se crea una nueva raíz.
 
 ---
 
-# ⬆️ Propagación de un split
+#  Propagación de un split
 
 Una división puede provocar que el padre también se desborde.
 
@@ -324,7 +324,7 @@ Esto permite que el árbol conserve su estructura balanceada.
 
 ---
 
-# 🔁 Llaves repetidas
+# Llaves repetidas
 
 La práctica **no permite llaves repetidas**.
 
@@ -343,7 +343,7 @@ La llave `35` debe aparecer solamente una vez.
 
 ---
 
-# 📊 Impresión por niveles
+# Impresión por niveles
 
 La operación:
 
@@ -365,7 +365,7 @@ En nuestra implementación se utiliza un arreglo como cola auxiliar para recorre
 
 ---
 
-# 🗑️ Eliminación
+# Eliminación
 
 La eliminación comienza buscando la llave que se desea eliminar.
 
@@ -393,7 +393,7 @@ En este caso no existe una subocupación porque el nodo todavía conserva una ll
 
 ---
 
-# ⚠️ Subocupación (Underflow)
+# Subocupación (Underflow)
 
 Para un Árbol B de orden 4, los nodos que no son la raíz deben tener al menos una llave.
 
@@ -414,7 +414,7 @@ La reparación puede realizarse mediante:
 
 ---
 
-# 🔄 Redistribución
+# Redistribución
 
 La redistribución se utiliza cuando un hermano tiene una llave adicional que puede prestar.
 
@@ -432,7 +432,7 @@ Esto permite mantener correctamente las llaves separadoras entre los hijos.
 
 ---
 
-# 🔗 Fusión
+# Fusión
 
 Si ninguno de los hermanos puede prestar una llave, se realiza una fusión.
 
@@ -452,7 +452,7 @@ Por esta razón, una fusión puede provocar una nueva subocupación en el padre 
 
 ---
 
-# 📉 Reducción de la raíz
+# Reducción de la raíz
 
 La raíz es un caso especial.
 
@@ -477,7 +477,7 @@ Esto disminuye la altura del árbol.
 
 ---
 
-# 🧪 Casos de prueba
+# Casos de prueba
 
 La práctica contiene **nueve casos principales de prueba**.
 
@@ -635,8 +635,7 @@ Resultado esperado:
 En este caso, la raíz anterior queda vacía durante la reparación y su único hijo se convierte en la nueva raíz.
 
 ---
-
-# ✅ Secuencia final de verificación
+#  Secuencia final de verificación
 
 La secuencia completa utilizada para comprobar el funcionamiento del árbol es:
 
@@ -688,7 +687,7 @@ Y el árbol final esperado es:
 
 ---
 
-# 🔍 Invariantes comprobadas
+#  Invariantes comprobadas
 
 Después de las operaciones se verifica que el árbol conserve sus propiedades principales:
 
@@ -703,7 +702,7 @@ Después de las operaciones se verifica que el árbol conserve sus propiedades p
 
 ---
 
-# ❓ Preguntas para el README
+# Preguntas para el README
 
 ## ¿Por qué al insertar una llave nueva no podemos decidir el hijo únicamente comparando con la primera llave del nodo?
 
@@ -770,7 +769,7 @@ La búsqueda de un Árbol B aprovecha precisamente esta organización para recor
 
 ---
 
-# 📝 Conclusión
+#  Conclusión
 
 La práctica permitió implementar **un Árbol B de orden 4 desde cero** y observar cómo la estructura mantiene el balance durante las operaciones de inserción y eliminación.
 
