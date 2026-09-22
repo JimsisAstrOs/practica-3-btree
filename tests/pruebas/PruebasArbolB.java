@@ -26,7 +26,7 @@ public class PruebasArbolB{
         System.out.println("[10 | 20 | 40]");
         System.out.println("Obtenido:");
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
 
         // PRUEBA 3: PRIMER SPLIT DE LA RAÍZ
 
@@ -37,7 +37,7 @@ public class PruebasArbolB{
         System.out.println("[10 | 20] [40]");
         System.out.println("Obtenido:");
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
 
         // PRUEBA 4: BÚSQUEDA
 
@@ -62,14 +62,14 @@ public class PruebasArbolB{
         System.out.println("[5 | 10] [20 | 25] [35 | 40] [50] [70]");
         System.out.println("\nObtenido:");
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
 
         // PRUEBA 6: NO DUPLICADOS
 
         System.out.println("\nPRUEBA 6: inserción de duplicado");
         arbol.insertar(35);
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
         comprobar("buscar(35) después de duplicado", arbol.buscar(35),true);
 
         // PRUEBA 7: ELIMINAR HOJA SIN UNDERFLOW
@@ -77,7 +77,7 @@ public class PruebasArbolB{
         System.out.println("\nPRUEBA 7: eliminar hoja sin underflow");
         arbol.eliminar(25);
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
         comprobar("buscar(25) después de eliminar", arbol.buscar(25),false);
 
         // PRUEBA 8: REPARACIÓN UNDERFLOW
@@ -86,7 +86,7 @@ public class PruebasArbolB{
         arbol.eliminar(10);
         arbol.eliminar(70);
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
         comprobar("buscar(10) después de eliminar", arbol.buscar(10), false);
         comprobar("buscar(70) después de eliminar", arbol.buscar(70), false);
 
@@ -94,7 +94,7 @@ public class PruebasArbolB{
         System.out.println("\nPRUEBA 9: reducción de altura");
         arbol.eliminar(5);
         arbol.imprimirPorNiveles();
-        // Falta ver si es correcta o no la impresión.
+        // Comparación visual: verificar que "Obtenido" coincida con "Esperado".
         comprobar("buscar(5) después de eliminar", arbol.buscar(5), false);
     }
 
