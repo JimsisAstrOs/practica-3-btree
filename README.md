@@ -59,13 +59,13 @@ La estructura se implementó utilizando arreglos para almacenar las llaves y ref
 Desde la carpeta del proyecto se debe compilar el código:
 
 ```bash
-javac -d . src/implementacion/Nodo.java src/implementacion/ArbolB.java src/Main.java
+javac -d out src/implementacion/Nodo.java src/implementacion/ArbolB.java src/Main.java
 ```
 
 Después se ejecuta:
 
 ```bash
-java Main
+java -cp out Main
 ```
 
 El programa principal muestra las operaciones de **inserción, búsqueda y eliminación**, además de permitir observar la estructura del árbol mediante `imprimirPorNiveles()`.
@@ -77,19 +77,19 @@ El programa principal muestra las operaciones de **inserción, búsqueda y elimi
 Las pruebas se encuentran en:
 
 ```text
-tests/PruebasArbolB.java
+tests/pruebas/PruebasArbolB.java
 ```
 
 Se pueden compilar junto con la implementación:
 
 ```bash
-javac -d . src/implementacion/Nodo.java src/implementacion/ArbolB.java tests/PruebasArbolB.java
+javac -d out src/implementacion/Nodo.java src/implementacion/ArbolB.java tests/pruebas/PruebasArbolB.java
 ```
 
 Y ejecutar mediante:
 
 ```bash
-java PruebasArbolB
+java -cp out PruebasArbolB
 ```
 
 Las pruebas muestran el resultado esperado y el resultado obtenido en las operaciones estructurales, además de utilizar comprobaciones para las búsquedas.
@@ -108,7 +108,8 @@ practica-3-btree/
 │       └── Nodo.java
 │
 ├── tests/
-│   └── PruebasArbolB.java
+│   └── pruebas/
+│       └── PruebasArbolB.java
 │
 └── README.md
 ```
@@ -353,12 +354,12 @@ imprimirPorNiveles()
 
 permite observar la estructura del árbol nivel por nivel.
 
-Para la secuencia de inserción indicada en la práctica, la estructura esperada es:
+Para la secuencia de inserción indicada en la práctica, la estructura esperada es una línea por nivel:
 
 ```text
-Nivel 0: [45]
-Nivel 1: [15 | 30] [60]
-Nivel 2: [5 | 10] [20 | 25] [35 | 40] [50] [70]
+[45]
+[15 | 30] [60]
+[5 | 10] [20 | 25] [35 | 40] [50] [70]
 ```
 
 En nuestra implementación se utiliza un arreglo como cola auxiliar para recorrer los nodos por niveles.
