@@ -15,9 +15,15 @@ public class Main {
         System.out.println("Árbol después de insertar:");
         arbol.imprimirPorNiveles();
 
+        // Validación del árbol
+        System.out.println("¿Árbol válido? " + arbol.validarArbol());
+
         arbol.insertar(35);
         System.out.println("Después de insertar 35 otra vez:");
         arbol.imprimirPorNiveles();
+
+        // Validación después de insertar
+        System.out.println("¿Árbol válido? " + arbol.validarArbol());
 
         System.out.println(arbol.buscar(35) ? "35 FOUND" : "35 NOT_FOUND");
         System.out.println(arbol.buscar(99) ? "99 FOUND" : "99 NOT_FOUND");
@@ -29,6 +35,9 @@ public class Main {
         System.out.println("Después de eliminar 25, 10 y 70:");
         arbol.imprimirPorNiveles();
 
+        // Validación después de eliminar
+        System.out.println("¿Árbol válido? " + arbol.validarArbol());
+
         System.out.println(arbol.buscar(25) ? "25 FOUND" : "25 NOT_FOUND");
         System.out.println(arbol.buscar(35) ? "35 FOUND" : "35 NOT_FOUND");
 
@@ -36,5 +45,9 @@ public class Main {
 
         System.out.println("Después de eliminar 5:");
         arbol.imprimirPorNiveles();
+
+        // Validación final
+        System.out.println("¿Árbol válido? " + arbol.validarArbol());
     }
+    
 }
