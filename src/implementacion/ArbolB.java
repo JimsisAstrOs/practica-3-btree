@@ -303,13 +303,103 @@ public class ArbolB {
         derecho.numClaves--;
     }
 
+
+    /**
+    *PUNTO EXTRA.
+    */
     
+    /**
+    *Verificar que el Árbol B cumpla con sus propiedades estructurales.
+    *@return true si el arbol es válido, false en caso contrario.
+    */
+    public boolean validarArbol() {
+        if (raiz == null) {
+            return true;
+        }
+        int[] nivelHoja = {-1};
+        return validarNodo(raiz, true, Long.MIN_VALUE,
+                           Long.MAX_VALUE, 0, nivelHoja);
+    }
 
-    
+    /*
+    *validar recursivamente un nodo y sus decendientes.
+    */
+    private boolean validarNodo(Nodo nodo, boolean esRaiz,
+                                long minimo, long maximo, 
+                                int nivel, int [] nivelHoja) {
+        if (nodo == null) {
+            return false;
+        }
+        //Verificar la cantidad de llaves 
+        if (nodo.numClaves < 1 || nodo.numClaves > 3) {
+            return false;
+        }
 
+        //Verificar que las llaves estén ordenadas y dentro del intervalo permitido
+        for (int i = 0; i < nodo.numClaves; i++) {
+            int clave = nodo.claves[i];
+            
+            if (clave <= minimo || clave >= maximo) {
+                return false;
+            }
+        }
 
-    
+        //la raíz no puede tener más de tres llaves.
+        if (esRaiz && nodo.numClaves > 3) {
+            return false;
+        }
 
+        //verificar si el nodo es una hoja
+        boolean esHoja = nodo.esHoja();
+
+        if (esHoja) {
+            //una hoja no debe tener hijos
+            for (int i = 0; i < nodo.hijos.length; i++) {
+                if (nodo.hijos[i] != null) {
+                    return false;
+                }
+            }
+            //todas las hojas deben estar al mismo nivel
+            if (nivelHoja[0] == -1) {
+                nivelHoja[0] = nivel;
+            } else if (nivelHoja[0] != nivel) {
+            return false;
+            }
+            return true;
+        }
+
+        //un nodo interno con n llaves , n + 1 hijos
+        int cantidadHijos = 0;
+
+        for (int i = 0; i <= nodo.numClaves; i++) {
+            if (nodo.hijos[i] == null) {
+                return false;
+            }
+        }
+        for (int i = nodo.numClaves + 1; i < nodo.hijos.length; i++) {
+            if (nodo.hijos[i] != null) {
+                return false;
+            }
+        }
+
+        //validamos recursivamente cada hijo con su intervalo
+        for (int i = 0; i <= nodo.numClaves; i++) {
+            long limiteInferior = (i == 0) 
+                ? minimo : nodo.claves[i - 1];
+
+            long limiteSuperior = (i == nodo.numClaves)
+                ? maximo : nodo.claves[i];
+
+            if(!validarNodo(nodo.hijos[i], false,
+                            limiteInferior, limiteSuperior,
+                            nivel + 1, nivelHoja)) {
+                return false;
+            }
+        }
+        return true; 
+
+    }
 
 }
+
 
