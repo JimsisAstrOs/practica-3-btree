@@ -791,3 +791,59 @@ Reducción de la raíz
 ```
 
 De esta manera, el árbol puede mantener sus llaves ordenadas, limitar el número de llaves por nodo y conservar todas sus hojas al mismo nivel.
+
+# Reto opcional
+
+Se pidio como reto opcional agregar la operación: validarArbol()
+Esta operación permite verificar automaticamente que la estructura del Arbol B conserve sus propiedades después de realizar inserciones y aliminaciones.
+ El método devuelve:
+ true 
+ si el arbol cumple con todas las condiciones estructurales, y:
+ false
+ si se detecta alguna violación.
+
+ #Propiedades verificadas
+
+ validadArbol() comprueba las siguientes condiciones:
+ - llaves ordenadas en cada nodo: las llaves almacenadas en cada nodo deben estar en orden creciente.
+- maáximo de tres llaves por nodo: ningún nodo puede conservar más de tres llaves al finalizar una operación
+- cantidad correcta de hijos: un nodo interno con n llaves debe tener exactamente n + 1 hijos
+- minimo de una llave: todos los nodos distintos de la raíz deben contener al menos una llave
+- todas las hojas en el mismo nivel: se verifica que todas las hojas tengan la mísma profundidad dentro del árbol.
+
+Además, la validación comprueba que las llaves de los hijos respeten los intervalos establecidos por las llaves de si nodo padre.
+
+#Funcionamiento
+La validación comienza desde la raíz y recorre recursivamente todo el árbol.
+Para cada nodo se verifica primero el número de llaves y que estas se encuentren ordenadas.
+Después se determina si el nodo es una hoja o un nodo interno.
+En el caso de una hoja, se registra su nivel y se compara con el nivel de las demás hojas. Si alguna hoja se encuentra en un nivel diferente, el árbol se considera inválido.
+En el caso de un nodo interno, se comprueba que tenga exactamente una cantidad de hijos igual a: 
+némro de llaves + 1
+Finalmente, se recorren recursivamente sus hijos utilizando los intervalos determinados por las llaves del nodo.
+
+#Uso
+La operación puede utilizarse desde el programa principal de la siguiente manera:
+System.out.println("¿Árbol válido? " + arbol.validarArbol());
+
+Por ejemplo:
+Árbol después de insertar:
+[45]
+[15 | 30] [60]
+[5 | 10] [20 | 25] [35 | 40] [50] [70]
+
+¿Árbol válido? true
+
+También se utiliza después de las operaciones de inserción y eliminación para comprobar que las modificaciones realizadas no hayan afectado las propiedades estructurales del Árbol B.
+
+Por ejemplo:
+arbol.eliminar(25);
+arbol.eliminar(10);
+arbol.eliminar(70);
+
+System.out.println("¿Árbol válido? " + arbol.validarArbol());
+
+Si la estructura continúa cumpliendo todas las propiedades del Árbol B de orden 4, el resultado será:
+¿Árbol válido? true
+Esta operación corresponde al reto opcional de la práctica y funciona como una herramienta de verificación automática de la estructura del árbol.
+
